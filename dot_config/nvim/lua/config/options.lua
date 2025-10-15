@@ -5,10 +5,13 @@
 
 -- if running linux it means I'm working remotely so we should use
 --
-if vim.loop.os_uname().sysname == "Linux" then
-  vim.opt.clipboard = "osc52"
-else
-  vim.opt.clipboard = "unnamedplus"
-end
 vim.g.mapleader = ","
-vim.g.maplocalleader = "\\"
+vim.g.snacks_animate = false
+vim.g.lazyvim_prettier_needs_config = false
+vim.opt.autoread = true
+
+vim.api.nvim_create_user_command("Cppath", function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})

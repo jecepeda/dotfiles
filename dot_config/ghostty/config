@@ -1,0 +1,6 @@
+clipboard-paste-protection = false
+copy-on-select = true
+clipboard-read=allow
+clipboard-write=allow
+font-size=12
+theme="Catppuccin Mocha"
