@@ -1,0 +1,19 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+if [ -d "$HOME/.nvm" ]; then
+    echo "nvm is already installed"
+    exit 0
+fi
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+# load nvm cli
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# install latest lts node version
+nvm install --lts
+nvm use --lts
+
+{{ end -}}

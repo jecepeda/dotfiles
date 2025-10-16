@@ -1,0 +1,11 @@
+packages:
+  darwin:
+    brews:
+      - "git"
+      - "wget"
+      - "neovim"
+      - "tmux"
+      - "ripgrep"
+      - "lazygit"
+    casks:
+      - "ghostty"

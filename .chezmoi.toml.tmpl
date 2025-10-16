@@ -1,6 +1,8 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
 {{- $username := promptStringOnce . "username" "Github Username"}}
+{{- $installNvm := promptBoolOnce . "installNvm" "Do you want to install nvm?"}}
 
 [data]
     email = {{ $email | quote }}
     username = {{ $username | quote }}
+    installNvm = {{ $installNvm | quote }}
