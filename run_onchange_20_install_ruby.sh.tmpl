@@ -1,0 +1,8 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+rbenv init zsh
+rbenv install -s {{ .ruby_version }}
+rbenv global {{ .ruby_version }}
+
+{{ end -}}
