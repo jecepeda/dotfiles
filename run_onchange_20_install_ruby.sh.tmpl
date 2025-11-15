@@ -1,8 +1,27 @@
 {{ if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
-rbenv init zsh
-rbenv install -s {{ .ruby_version }}
-rbenv global {{ .ruby_version }}
+if ! command -v rbenv &> /dev/null; then
+    echo "rbenv not found. Please install rbenv first."
+    exit 1
+fi
+
+eval "$(rbenv init -)"
+
+RUBY_VERSION="{{ .ruby_version }}"
+
+if rbenv versions --bare | grep -q "^${RUBY_VERSION}$"; then
+    echo "Ruby version ${RUBY_VERSION} is already installed."
+else
+    echo "Installing Ruby version ${RUBY_VERSION}..."
+    rbenv install -s "${RUBY_VERSION}"
+fi
+
+if [ "$(rbenv global)" != "${RUBY_VERSION}" ]; then
+    echo "Setting global Ruby version to ${RUBY_VERSION}..."
+    rbenv global "${RUBY_VERSION}"
+else
+    echo "Global Ruby version is already set to ${RUBY_VERSION}."
+fi
 
 {{ end -}}

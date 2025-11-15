@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -z "$EDITOR" ]; then
+  export EDITOR=nvim
+fi
+
+# Persist EDITOR setting in .zshrc
+if [ -f "$HOME/.zshrc" ]; then
+    if ! grep -q "^export EDITOR=" "$HOME/.zshrc"; then
+        printf "\n# Set default editor\nexport EDITOR=nvim\n" >> "$HOME/.zshrc"
+    fi
+fi
