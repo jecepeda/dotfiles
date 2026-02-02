@@ -4,7 +4,9 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        ruby_lsp = {},
+        ruby_lsp = {
+          mason = false,
+        },
         sorbet = {},
       },
       setup = {
@@ -15,6 +17,10 @@ return {
           end
 
           local srb_command = vim.fn.getcwd() .. "/bin/srb"
+
+          if vim.fn.executable(srb_command) == 0 then
+            return
+          end
 
           require("lspconfig").sorbet.setup({
             cmd = { srb_command, "tc", "--lsp" },

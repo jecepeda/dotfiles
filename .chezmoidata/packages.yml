@@ -10,6 +10,9 @@ packages:
       - "rbenv"
       - "opencode"
       - "jq"
+      - "flyctl"
+      - "watchman"
+      - "tree-sitter-cli"
     casks:
       - "ghostty"
       - "logi-options+"
