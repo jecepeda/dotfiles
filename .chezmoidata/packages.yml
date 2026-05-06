@@ -5,6 +5,7 @@ packages:
       - "wget"
       - "neovim"
       - "tmux"
+      - "tmuxinator"
       - "ripgrep"
       - "lazygit"
       - "rbenv"
@@ -13,6 +14,8 @@ packages:
       - "flyctl"
       - "watchman"
       - "tree-sitter-cli"
+      - "oven-sh/bun/bun"
     casks:
       - "ghostty"
       - "logi-options+"
+      - "alfred"
